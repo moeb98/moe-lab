@@ -1,0 +1,43 @@
+version: '3.3'
+
+services:
+  nextcloud-db:
+    image: hypriot/rpi-mysql:latest
+    container_name: nextcloud-db
+    restart: always
+    volumes:
+      - /srv/docker/nextcloud/database_var:/var/lib/mysql
+    environment:
+      - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=${NEXTCLOUD_DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${NEXTCLOUD_DB_NAME}
+      - MYSQL_USER=${NEXTCLOUD_DB_USER}
+      - MYSQL_PASSWORD=${NEXTCLOUD_DB_PASSWORD}
+
+  nextcloud-app:
+    image: nextcloud
+    container_name: nextcloud-app
+    restart: always
+    volumes: 
+      - /srv/docker/nextcloud/app:/var/www/html
+      - /srv/docker/nextcloud/nas:/var/www/data
+    links:
+      - nextcloud-db
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nextcloud.entrypoints=web-secure"
+      - "traefik.http.routers.nextcloud.rule=Host (`${NEXTCLOUD_DOMAIN}`)"
+      - "traefik.http.routers.nextcloud.tls=true"
+      - "traefik.http.routers.nextcloud.tls.certresolver=default"
+    networks:
+      - traefik_proxy
+      - default
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  default:
+    driver: bridge

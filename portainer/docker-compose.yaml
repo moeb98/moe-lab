@@ -1,0 +1,31 @@
+---
+version: '3.3'
+
+services:
+  portainer:
+    image: portainer/portainer:arm
+    container_name: portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+#      - /var/docker/portainer:/data
+
+# Comment in, if you wanna proxy portainer via traefik 
+# (.env file with PORTAINER_DOMAIN as environment variable required)
+
+#    labels:
+#      - "traefik.enable=true"
+#      - "traefik.http.routers.portainer.entrypoints=web-secure"
+#      - "traefik.http.routers.portainer.rule=Host(`${PORTAINER_DOMAIN}`)"
+#      - "traefik.http.routers.portainer.tls=true"
+#      - "traefik.http.routers.portainer.tls.certresolver=default"
+    restart: always
+    networks:
+ #     - traefik_proxy
+      - default
+
+networks:
+#  traefik_proxy:
+#    external:
+#      name: traefik_proxy
+  default:
+    driver: bridge
