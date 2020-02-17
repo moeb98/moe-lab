@@ -12,26 +12,28 @@ services:
       - --providers.docker.exposedByDefault=false
       - --providers.docker.network=traefik_proxy
       - --providers.docker.endpoint=unix:///var/run/docker.sock
-      - --api
+      - --api.dashboard=true
 #      - --certificatesresolvers.default.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
       - --certificatesresolvers.default.acme.email=${ACME_EMAIL}
       - --certificatesresolvers.default.acme.storage=/config/acme.json
       - --certificatesresolvers.default.acme.tlschallenge=true
       - --log.filePath=/srv/docker/traefik/traefik.log
       - --log.format=json
+      - --accesslog=true
+      - --accesslog.filePath=/srv/docker/traefik/access.log
+      - --accesslog.format=json
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /etc/localtime:/etc/localtime
       - "./config:/config"
-#      - /srv/docker/traefik/access.log:/srv/docker/traefik/access.log
+      - /srv/docker/traefik/access.log:/srv/docker/traefik/access.log
       - /srv/docker/traefik/traefik.log:/srv/docker/traefik/traefik.log
  
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.api.rule=Host(`${TRAEFIK_DOMAIN}`) && PathPrefix(`/dashboard`)"
-      - "traefik.http.routers.api.entryPoints=web-secure"
-      - "traefik.http.routers.api.rule=PathPrefix(`/api`) || PathPrefix(`/dashboard`)"
-#      - "traefik.http.routers.api.tls=true"
+      - "traefik.http.routers.api.entrypoints=web-secure" 
+      - "traefik.http.routers.api.rule=Host(`${TRAEFIK_DOMAIN}`)"
+      - "traefik.http.routers.api.tls=true"
       - "traefik.http.routers.api.tls.certresolver=default"
       - "traefik.http.routers.api.service=api@internal"
       - "traefik.http.routers.api.middlewares=api-auth"
