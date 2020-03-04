@@ -47,6 +47,9 @@ services:
     # middleware redirect
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
 
+    # loadbalancer service
+      - "traefik.http.services.traefik.loadbalancer.server.port=80"
+
     networks:
       - traefik_proxy
       - default
