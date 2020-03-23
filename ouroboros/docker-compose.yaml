@@ -13,6 +13,6 @@ services:
       - LOG_LEVEL=error
       - SELF_UPDATE=true
 # If we wanna ignore container we can do so by providing the container name here
-#      - IGNORE=mysql
+      - IGNORE=nextcloud-app nextcloud-db
       - CLEANUP=true
       - TZ=Europe/Berlin

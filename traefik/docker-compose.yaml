@@ -32,6 +32,8 @@ services:
  
     labels:
       - "traefik.enable=true"
+
+    # enable dashboard
 #      - "traefik.http.routers.api.entrypoints=web-secure" 
 #      - "traefik.http.routers.api.rule=Host(`${TRAEFIK_DOMAIN}`)"
 #      - "traefik.http.routers.api.tls=true"
