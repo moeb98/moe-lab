@@ -19,6 +19,9 @@ services:
     # innodb format
 #    command: mysqld --innodb-large-prefix --innodb-file-format=barracuda --innodb-file-per-table
 
+    networks:
+      - backend
+
   nextcloud-app:
     image: nextcloud:stable
     container_name: nextcloud-app
@@ -46,13 +49,17 @@ services:
       - "traefik.http.middlewares.nc-redirect.redirectregex.permanent=true"
 
       - "traefik.http.services.nextcloud.loadbalancer.server.port=80"
+
     networks:
       - traefik_proxy
-      - default
+      - backend
 
 networks:
   traefik_proxy:
     external:
       name: traefik_proxy
-  default:
-    driver: bridge
+  backend:
+    external:
+      name: backend
+#  default:
+#    driver: bridge

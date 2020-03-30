@@ -19,13 +19,13 @@ services:
 #      - "traefik.http.routers.portainer.tls=true"
 #      - "traefik.http.routers.portainer.tls.certresolver=default"
     restart: always
-    networks:
- #     - traefik_proxy
-      - default
+#    networks:
+#     - traefik_proxy
+#      - default
 
-networks:
+# networks:
 #  traefik_proxy:
 #    external:
 #      name: traefik_proxy
-  default:
-    driver: bridge
+#  default:
+#    driver: bridge
