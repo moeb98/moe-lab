@@ -3,11 +3,12 @@
 Traefik is a reverse proxy encrypting traffic with Let's encrypt certificates-
 
 # Installation
-For using Traefik in the configuration of the provided docker-compose files please create a traefik_proxy network in docker as follows:
+For using Traefik in the configuration of the provided docker-compose files please create a traefik_proxy and a backend network in docker as follows:
 
 ## Create network
 ```bash
 docker network create traefik_proxy
+docker network create backend
 ```
 
 ## Docker configuration 
