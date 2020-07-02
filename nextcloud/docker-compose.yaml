@@ -2,11 +2,13 @@ version: '3.3'
 
 services:
   nextcloud-db:
-    image: hypriot/rpi-mysql:latest
+#    image: hypriot/rpi-mysql:latest
+    image: jsurf/rpi-mariadb:latest
     container_name: nextcloud-db
     restart: always
     volumes:
-      - /srv/docker/nextcloud/database_var:/var/lib/mysql
+#      - /srv/docker/nextcloud/database_var:/var/lib/mysql
+      - /srv/docker/nextcloud/mariadb_var:/var/lib/mysql
     environment:
       - TZ=Europe/Berlin
       - PUID=1000
@@ -15,10 +17,10 @@ services:
       - MYSQL_DATABASE=${NEXTCLOUD_DB_NAME}
       - MYSQL_USER=${NEXTCLOUD_DB_USER}
       - MYSQL_PASSWORD=${NEXTCLOUD_DB_PASSWORD}
-
-    # innodb format
-#    command: mysqld --innodb-large-prefix --innodb-file-format=barracuda --innodb-file-per-table
-
+# innodb format
+    command: mysqld --innodb-large-prefix=true --innodb-file-format=barracuda --innodb-file-per-table=1
+#    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    
     networks:
       - backend
 
