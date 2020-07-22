@@ -1,22 +1,29 @@
 # Docker container for home lab applications based on docker-compose
 
-This repository contains applications like nextcloud, wordpress and the like proxied via traefik 2.0 for use in home labs. 
-Each application can be fired up with corresponding docker-compose files.
+This repository contains applications like nextcloud, wordpress and the like proxied
+via traefik 2.0 for use in home labs. Each application can be fired up with
+corresponding docker-compose files.
 
-# Software
+## Software
+
 In alphabetical order
 
-## N
+### N
+
 * Nextcloud (https://nextcloud.com)
 
-## O
+### O
+
 * Ouroboros (https://github.com/pyouroboros/ouroboros)
 
-## P
+### P
+
 * Portainer (https://www.portainer.io)
 
-## T
+### T
+
 * Traefik (https://traefik.io)
 
-## W
+### W
+
 * Wordpress (https://de.wordpress.org)
