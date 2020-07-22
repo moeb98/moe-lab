@@ -10,20 +10,20 @@ In alphabetical order
 
 ### N
 
-* Nextcloud (<https://nextcloud.com>)
+* Nextcloud - <https://nextcloud.com>
 
 ### O
 
-* Ouroboros (<https://github.com/pyouroboros/ouroboros>)
+* Ouroboros - <https://github.com/pyouroboros/ouroboros>
 
 ### P
 
-* Portainer (<https://www.portainer.io>)
+* Portainer - <https://www.portainer.io>
 
 ### T
 
-* Traefik (<https://traefik.io>)
+* Traefik - <https://traefik.io>
 
 ### W
 
-* Wordpress (<https://de.wordpress.org>)
+* Wordpress - <https://de.wordpress.org>
