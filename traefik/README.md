@@ -1,8 +1,8 @@
 # Traefik
 
-Traefik is a reverse proxy encrypting traffic with Let's encrypt certificates-
+Traefik is a reverse proxy encrypting traffic with Let's encrypt certificates
 
-# Installation
+## Installation
 
 For using Traefik in the configuration of the provided docker-compose files
 please create a traefik_proxy and a backend network in docker as follows:
@@ -17,7 +17,7 @@ docker network create backend
 ## Docker configuration
 
 All individual configurations for the docker-compose file are set via
-environment variables in a .env file. Thus, you need to create a hidden 
+environment variables in a .env file. Thus, you need to create a hidden
 file with the name .env (including the '.') containing the following
 environment variables:
 
@@ -25,7 +25,7 @@ environment variables:
 ACME_EMAIL=your@mail.com
 TRAEFIK_DOMAIN=your.dashboard.domain
 BASIC_AUTH=your_dashboard_user:your_htpasswd_password
-``` 
+```
 
 ## ACME configuration
 
