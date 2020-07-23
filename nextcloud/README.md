@@ -33,6 +33,6 @@ NEXTCLOUD_DB_PASSWORD=your_db_user_password
 
 After that, just fire up the docker-compose file as usual...
 
-````bash 
+````bash
 docker-compose up -d
 ````
