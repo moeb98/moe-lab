@@ -21,7 +21,8 @@ services:
     # innodb format
     command: | mysqld --innodb-large-prefix=true --innodb-file-format=barracuda 
                --innodb-file-per-table=1
-    # command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    # command: mysqld --character-set-server=utf8mb4 
+    #                 --collation-server=utf8mb4_unicode_ci
     
     networks:
       - backend
