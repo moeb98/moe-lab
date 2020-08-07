@@ -13,7 +13,7 @@ services:
     command: --admin-password="${ADMIN_PASSWD}"
     restart: always
 
-# Comment in, if you wanna proxy portainer via traefik 
+# Comment in, if you wanna proxy portainer via traefik
 # (.env file with PORTAINER_DOMAIN as environment variable required)
 
 #    labels:
