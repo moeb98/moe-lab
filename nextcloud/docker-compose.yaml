@@ -1,13 +1,14 @@
+---
 version: '3.3'
 
 services:
   nextcloud-db:
-#    image: hypriot/rpi-mysql:latest
+    # image: hypriot/rpi-mysql:latest
     image: jsurf/rpi-mariadb:latest
     container_name: nextcloud-db
     restart: always
     volumes:
-#      - /srv/docker/nextcloud/database_var:/var/lib/mysql
+      # - /srv/docker/nextcloud/database_var:/var/lib/mysql
       - /srv/docker/nextcloud/mariadb_var:/var/lib/mysql
     environment:
       - TZ=Europe/Berlin
@@ -17,10 +18,12 @@ services:
       - MYSQL_DATABASE=${NEXTCLOUD_DB_NAME}
       - MYSQL_USER=${NEXTCLOUD_DB_USER}
       - MYSQL_PASSWORD=${NEXTCLOUD_DB_PASSWORD}
-# innodb format
-    command: mysqld --innodb-large-prefix=true --innodb-file-format=barracuda --innodb-file-per-table=1
-#    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-    
+    # innodb format
+    command: mysqld --innodb-large-prefix=true --innodb-file-format=barracuda
+             --innodb-file-per-table=1
+    # command: mysqld --character-set-server=utf8mb4
+    #                 --collation-server=utf8mb4_unicode_ci
+
     networks:
       - backend
 
@@ -28,7 +31,7 @@ services:
     image: nextcloud:stable
     container_name: nextcloud-app
     restart: always
-    volumes: 
+    volumes:
       - /srv/docker/nextcloud/app:/var/www/html
       - /srv/docker/nextcloud/nas:/var/www/data
     links:
@@ -39,13 +42,13 @@ services:
       - "traefik.http.routers.nextcloud.rule=Host(`${NEXTCLOUD_DOMAIN}`)"
       - "traefik.http.routers.nextcloud.tls=true"
       - "traefik.http.routers.nextcloud.tls.certresolver=default"
-    # HSTS headers to meet SSL security recommendations for nextcloud
+      # HSTS headers to meet SSL security recommendations for nextcloud
       - "traefik.http.routers.nextcloud.middlewares=nc-hsts, nc-redirect"
       - "traefik.http.middlewares.nc-hsts.headers.stsSeconds=15552000"
       - "traefik.http.middlewares.nc-hsts.headers.stsPreload=true"
       - "traefik.http.middlewares.nc-hsts.headers.stsIncludeSubdomains=true"
       - "traefik.http.middlewares.nc-hsts.headers.forceSTSHeader=true"
-    # add 'well-known' redirection for caldav and carddav
+      # add 'well-known' redirection for caldav and carddav
       - "traefik.http.middlewares.nc-redirect.redirectregex.regex=https://(.*)/.well-known/(card|cal)dav"
       - "traefik.http.middlewares.nc-redirect.redirectregex.replacement=https://$$1/remote.php/dav/"
       - "traefik.http.middlewares.nc-redirect.redirectregex.permanent=true"
@@ -63,5 +66,5 @@ networks:
   backend:
     external:
       name: backend
-#  default:
-#    driver: bridge
+      # default:
+      #   driver: bridge
