@@ -35,13 +35,13 @@ services:
       - "traefik.enable=true"
 
       # enable dashboard
-      #   - "traefik.http.routers.api.entrypoints=web-secure" 
+      #   - "traefik.http.routers.api.entrypoints=web-secure"
       #   - "traefik.http.routers.api.rule=Host(`${TRAEFIK_DOMAIN}`)"
       #   - "traefik.http.routers.api.tls=true"
       #   - "traefik.http.routers.api.tls.certresolver=default"
       #   - "traefik.http.routers.api.service=api@internal"
       #   - "traefik.http.routers.api.middlewares=api-auth"
-      #   - "traefik.http.middlewares.api-auth.basicauth.users=${BASIC_AUTH}" 
+      #   - "traefik.http.middlewares.api-auth.basicauth.users=${BASIC_AUTH}"
 
       # global redirect to https
       - "traefik.http.routers.http-catchall.rule=hostregexp(`{host:.+}`)"
@@ -68,4 +68,4 @@ networks:
     external:
       name: traefik_proxy
       #  default:
-      #    driver: bridge    
+      #    driver: bridge
