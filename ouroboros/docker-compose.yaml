@@ -1,18 +1,18 @@
 ---
 version: '3'
 services:
- ouroboros:
+  ouroboros:
     image: pyouroboros/ouroboros:latest
     container_name: ouroboros
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-# Check interval in seconds... here we go for every 12 hours
+      # Check interval in seconds... here we go for every 12 hours
       - INTERVAL=43200
       - LOG_LEVEL=error
       - SELF_UPDATE=true
-# If we wanna ignore container we can do so by providing the container name here
+      # to ignore container: provide the respective container name here
       - IGNORE=nextcloud-app nextcloud-db
       - CLEANUP=true
       - TZ=Europe/Berlin
