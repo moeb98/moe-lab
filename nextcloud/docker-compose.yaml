@@ -36,6 +36,8 @@ services:
       - /srv/docker/nextcloud/nas:/var/www/data
     links:
       - nextcloud-db
+    environment:
+      - OVERWRITEPROTOCOL=https
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nextcloud.entrypoints=web-secure"
@@ -58,6 +60,21 @@ services:
     networks:
       - traefik_proxy
       - backend
+
+  coturn:
+    image: killua99/coturn
+    container_name: nextcloud-turn
+    restart: unless-stopped
+    ports:
+      - "3478:3478"
+    command: turnserver --log-file=stdout --external-ip=$$(detect-external-ip)
+             --realm=${NEXTCLOUD_DOMAIN} --total-quota=1000 --bps-capacity=0
+             --stale-nonce --no-multicast-peers
+             --listening-port=3478 --fingerprint --lt-cred-mech
+             --use-auth-secret --static-auth-secret=${COTURN_AUTH_SECRET}
+    networks:
+     - traefik_proxy
+     - backend
 
 networks:
   traefik_proxy:
