@@ -67,11 +67,16 @@ services:
     restart: unless-stopped
     ports:
       - "3478:3478"
+
     command: turnserver --log-file=stdout --external-ip=$$(detect-external-ip)
              --realm=${NEXTCLOUD_DOMAIN} --total-quota=1000 --bps-capacity=0
              --stale-nonce --no-multicast-peers
-             --listening-port=3478 --fingerprint --lt-cred-mech
+             --listening-port=3478 --fingerprint
              --use-auth-secret --static-auth-secret=${COTURN_AUTH_SECRET}
+             --log-file=/var/log/turnserver.log --verbose
+    volumes:
+      - /srv/docker/nextcloud/log:/var/log
+
     networks:
       - traefik_proxy
       - backend
