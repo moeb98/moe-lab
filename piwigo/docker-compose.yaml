@@ -1,0 +1,52 @@
+---
+version: '3.3'
+
+services:
+  piwigo-db:
+    image: jsurf/rpi-mariadb:latest
+    container_name: piwigo-db
+    restart: unless-stopped
+    volumes:
+      - /srv/docker/piwigo/mariadb_var:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${PIWIGO_DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${PIWIGO_DB_NAME}
+      - MYSQL_USER=${PIWIGO_DB_USER}
+      - MYSQL_PASSWORD=${PIWIGO_DB_PASSWORD}
+
+    networks:
+      - backend
+
+  piwigo-app:
+    image: linuxserver/piwigo
+    container_name: piwigo-app
+    restart: unless-stopped
+    volumes:
+      - /srv/docker/piwigo/config:/config
+    links:
+      - piwigo-db
+    depends_on:
+      - piwigo-db
+    environment:
+      - TZ=Europe/Berlin
+      - PUID=1000
+      - PGID=1000
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.piwigo.entrypoints=web-secure"
+      - "traefik.http.routers.piwigo.rule=Host(`${PIWIGO_DOMAIN}`)"
+      - "traefik.http.routers.piwigo.tls=true"
+      - "traefik.http.routers.piwigo.tls.certresolver=default"
+      - "traefik.http.services.piwigo.loadbalancer.server.port=80"
+
+    networks:
+      - traefik_proxy
+      - backend
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  backend:
+    external:
+      name: backend
