@@ -3,11 +3,12 @@ version: '3.3'
 
 services:
   wordpress-db:
-    image: hypriot/rpi-mysql
+    # image: hypriot/rpi-mysql
+    image: jsurf/rpi-mariadb:latest
     container_name: wordpress-db
     restart: always
     volumes:
-      - /srv/mysql:/var/lib/mysql
+      - /srv/mariadb:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${WORDPRESS_DB_ROOT_PASSWORD}
       - MYSQL_DATABASE=${WORDPRESS_DB_NAME}
