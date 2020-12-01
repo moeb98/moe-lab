@@ -3,7 +3,6 @@ version: '3.3'
 
 services:
   wordpress-db:
-    # image: hypriot/rpi-mysql
     image: jsurf/rpi-mariadb:latest
     container_name: wordpress-db
     restart: always
@@ -47,5 +46,3 @@ networks:
   backend:
     external:
       name: backend
-#  default:
-#    driver: bridge
