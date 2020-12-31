@@ -13,6 +13,6 @@ services:
       - LOG_LEVEL=error
       - SELF_UPDATE=true
       # to ignore container: provide the respective container name here
-      - IGNORE=nextcloud-app nextcloud-db
+      - IGNORE=nextcloud-app nextcloud-db piwigo-app piwigo-db
       - CLEANUP=true
       - TZ=Europe/Berlin
