@@ -19,6 +19,8 @@ services:
   wordpress-app:
     image: wordpress:latest
     container_name: wordpress-app
+    depends_on:
+        - wordpress-db
     restart: always
     volumes:
       - /srv/www/wp-content:/var/www/html/wp-content
