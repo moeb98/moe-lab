@@ -6,8 +6,8 @@ services:
     image: traefik:latest
     container_name: traefik
 
-# comment in if you want to use command line config instead of config files
-#    command:
+    # comment in if you want to use command line config instead of config files
+    # command:
       # - --entrypoints.web.address=:80
       # - --entrypoints.web-secure.address=:443
       # - --providers.docker=true
@@ -15,11 +15,11 @@ services:
       # - --providers.docker.network=traefik_proxy
       # - --providers.docker.endpoint=unix:///var/run/docker.sock
       # - --api.dashboard=true
-      
+
       # for test purposes this is the let's encrypt staging server
       # - --certificatesresolvers.default.acme.caserver=
       # https://acme-staging-v02.api.letsencrypt.org/directory
-      
+
       # - --certificatesresolvers.default.acme.email=${ACME_EMAIL}
       # - --certificatesresolvers.default.acme.storage=/config/acme.json
       # - --certificatesresolvers.default.acme.tlschallenge=true
