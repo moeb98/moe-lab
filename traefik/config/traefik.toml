@@ -4,14 +4,17 @@
   format = "json"
 
 # comment in, if you wanna see access logs, too...
-# [accessLog]
-#   filePath = "/srv/docker/traefik/access.log"
-#   format = "json"
+ [accessLog]
+   filePath = "/srv/docker/traefik/access.log"
+   format = "json"
 
-[providers.docker]
-  exposedByDefault = false
-  endpoint = "unix:///var/run/docker.sock"
-  network = "traefik_proxy"
+[providers]
+  [providers.docker]
+    exposedByDefault = false
+    endpoint = "unix:///var/run/docker.sock"
+    network = "traefik_proxy"
+#  [providers.file]
+#    filename = "/etc/traefik/dynamic.yml"
 
 [api]
   dashboard = true
@@ -28,5 +31,5 @@
   [certificatesResolvers.default.acme]
     email = "moeb98@yahoo.de"
 #    email = "${ACME_EMAIL}"
-    storage = "acme.json"
+    storage = "/etc/traefik/acme.json"
     [certificatesResolvers.default.acme.tlsChallenge]
