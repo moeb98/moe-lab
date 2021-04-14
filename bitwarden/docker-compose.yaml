@@ -35,7 +35,7 @@ services:
 
       # notifications hub
       - "traefik.http.routers.bitwarden-websocket.rule=
-          Host(`${BITWARDEN_DOMAIN}`) && Path(`/notifications/hub`)"
+         Host(`${BITWARDEN_DOMAIN}`) && Path(`/notifications/hub`)"
       - "traefik.http.routers.bitwarden-websocket.tls=true"
       - "traefik.http.routers.bitwarden-websocket.service=bitwarden-websocket"
       - "traefik.http.services.bitwarden-websocket.loadbalancer.server.port=3012"
