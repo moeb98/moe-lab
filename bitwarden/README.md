@@ -1,6 +1,6 @@
 # Bitwarden
 
-Bitwarden is a password vault, deployed in a docker container here. 
+Bitwarden is a password vault, deployed in a docker container here.
 It stores passwords and with suitable browser add-ons and mobile apps
 can automatically insert username / password combinations in login
 forms of web applications.
