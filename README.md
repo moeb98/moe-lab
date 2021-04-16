@@ -9,6 +9,7 @@ corresponding docker-compose files.
 In alphabetical order
 
 ### B
+
 * Bitwarden_rs - <https://github.com/dani-garcia/bitwarden_rs>
 
 ### N
