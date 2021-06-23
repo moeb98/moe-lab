@@ -24,6 +24,10 @@ In alphabetical order
 
 * Portainer - <https://www.portainer.io>
 
+### S
+
+* Syncthing - <https://syncthing.net/>
+
 ### T
 
 * Traefik - <https://traefik.io>
