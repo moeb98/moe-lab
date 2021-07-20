@@ -1,0 +1,11 @@
+---
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'online'
+rule_files:
+scrape_configs:
+  - job_name: 'me-photography'
+    static_configs:
+      - targets: ['www.eberlein.tk']
