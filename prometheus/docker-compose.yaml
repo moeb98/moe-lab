@@ -20,8 +20,8 @@ services:
     depends_on:
       - "prometheus"
     ports:
-    - "9115:9115"
+      - "9115:9115"
     volumes:
-    - "./config/blackbox-exporter.yml:/etc/prometheus/blackbox-exporter.yml"
+      - "./config/blackbox-exporter.yml:/etc/prometheus/blackbox-exporter.yml"
     command:
-    - "--config.file=/etc/prometheus/blackbox-exporter.yml"
+      - "--config.file=/etc/prometheus/blackbox-exporter.yml"
