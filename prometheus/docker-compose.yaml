@@ -2,7 +2,7 @@
 version: '3'
 
 services:
-  mon_prometheus:
+  prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
     restart: unless-stopped
@@ -10,3 +10,5 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
