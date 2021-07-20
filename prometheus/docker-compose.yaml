@@ -12,3 +12,16 @@ services:
       - ./config/:/etc/prometheus/
     ports:
       - "9090:9090"
+
+  blackbox-exporter:
+    image: "prom/blackbox-exporter:latest"
+    hostname: "blackbox"
+    restart: unless-stopped
+    depends_on:
+      - "prometheus"
+    ports:
+    - "9115:9115"
+    volumes:
+    - "./config/blackbox-exporter.yml:/etc/prometheus/blackbox-exporter.yml"
+    command:
+    - "--config.file=/etc/prometheus/blackbox-exporter.yml"
