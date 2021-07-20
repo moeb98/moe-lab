@@ -13,7 +13,7 @@ scrape_configs:
       module: [http_2xx]
     file_sd_configs:
       - files:
-        - /etc/prometheus/targets.yml
+          - /etc/prometheus/targets.yml
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
