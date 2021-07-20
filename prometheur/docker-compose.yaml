@@ -1,0 +1,12 @@
+---
+version: '3'
+
+services:
+  mon_prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - $PWD/config/prometheus.yml:/etc/prometheus/prometheus.yml
