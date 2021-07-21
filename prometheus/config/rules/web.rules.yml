@@ -3,6 +3,6 @@ groups:
     rules:
       - alert: invalid_http_status_code
         expr: probe_http_status_code != 200
-        for: 1m
+        for: 30m
         labels:
           severity: critical
