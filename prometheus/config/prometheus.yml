@@ -1,6 +1,6 @@
 global:
-  scrape_interval: 15s
-  evaluation_interval: 1m
+  scrape_interval: 15m
+  evaluation_interval: 15m
 
 rule_files:
   - /etc/prometheus/rules/*.yml
