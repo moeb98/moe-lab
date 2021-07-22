@@ -1,3 +1,5 @@
+---
+
 groups:
   - name: web.rules
     rules:
