@@ -33,4 +33,3 @@ services:
     ports:
       - "9469:9469"
     restart: unless-stopped
-    
