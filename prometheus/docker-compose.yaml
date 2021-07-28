@@ -25,11 +25,3 @@ services:
       - "./config/blackbox-exporter.yml:/etc/prometheus/blackbox-exporter.yml"
     command:
       - "--config.file=/etc/prometheus/blackbox-exporter.yml"
-
-  script-exporter:
-    image: "ricoberger/script_exporter:v2.2.0"
-    depends_on:
-      - "prometheus"
-    ports:
-      - "9469:9469"
-    restart: unless-stopped
