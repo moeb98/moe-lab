@@ -27,7 +27,7 @@ services:
       - "--config.file=/etc/prometheus/blackbox-exporter.yml"
 
   script-exporter:
-    image: "ricoberger/script_exporter"
+    image: "ricoberger/script_exporter:v2.2.0"
     depends_on:
       - "prometheus"
     ports:
