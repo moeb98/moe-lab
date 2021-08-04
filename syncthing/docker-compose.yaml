@@ -13,8 +13,9 @@ services:
 
     volumes:
       - /srv/syncthing/config:/config
-      - /srv/syncthing/data:/data1
-      # - /path/to/data2:/data2
+      - /srv/syncthing/data:/data
+#      - /srv/syncthing/music:/data/music
+#      - /srv/syncthing/album:/data/album
 
     ports:
       - 8384:8384

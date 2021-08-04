@@ -4,8 +4,8 @@ version: '3.3'
 services:
 
   bitwarden:
-    image: bitwardenrs/server:latest
-    container_name: bitwarden_rs
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
     restart: unless-stopped
     volumes:
       - /srv/docker/bitwarden:/data
@@ -17,28 +17,28 @@ services:
       # - "traefik.http.routers.bitwarden.entrypoints=web-secure"
 
       # ui
-      - "traefik.http.routers.bitwarden.rule=Host(`${BITWARDEN_DOMAIN}`)"
-      - "traefik.http.routers.bitwarden.tls=true"
-      - "traefik.http.routers.bitwarden.tls.certresolver=default"
-      - "traefik.http.routers.bitwarden.service=bitwarden-ui"
-      - "traefik.http.services.bitwarden-ui.loadbalancer.server.port=80"
+      - "traefik.http.routers.vaultwarden.rule=Host(`${BITWARDEN_DOMAIN}`)"
+      - "traefik.http.routers.vaultwarden.tls=true"
+      - "traefik.http.routers.vaultwarden.tls.certresolver=default"
+      - "traefik.http.routers.vaultwarden.service=vaultwarden-ui"
+      - "traefik.http.services.vaultwarden-ui.loadbalancer.server.port=80"
 
       # admin console
-      - "traefik.http.routers.bitwarden-admin.rule=
+      - "traefik.http.routers.vaultwarden-admin.rule=
          Host(`${BITWARDEN_DOMAIN}`) && PathPrefix(`/admin`)"
-      - "traefik.http.routers.bitwarden-admin.tls=true"
-      - "traefik.http.routers.bitwarden-admin.service=admin-panel"
+      - "traefik.http.routers.vaultwarden-admin.tls=true"
+      - "traefik.http.routers.vaultwarden-admin.service=admin-panel"
       - "traefik.http.services.admin-panel.loadbalancer.server.port=80"
-      - "traefik.http.routers.bitwarden-admin.tls.certresolver=default"
+      - "traefik.http.routers.vaultwarden-admin.tls.certresolver=default"
       - "traefik.http.middlewares.admin-auth.basicauth.users=${ADMIN_USER_PW}"
-      - "traefik.http.routers.bitwarden-admin.middlewares=admin-auth"
+      - "traefik.http.routers.vaultwarden-admin.middlewares=admin-auth"
 
       # notifications hub
-      - "traefik.http.routers.bitwarden-websocket.rule=
+      - "traefik.http.routers.vaultwarden-websocket.rule=
          Host(`${BITWARDEN_DOMAIN}`) && Path(`/notifications/hub`)"
-      - "traefik.http.routers.bitwarden-websocket.tls=true"
-      - "traefik.http.routers.bitwarden-websocket.service=bitwarden-websocket"
-      - "traefik.http.services.bitwarden-websocket.loadbalancer.server.port=3012"
+      - "traefik.http.routers.vaultwarden-websocket.tls=true"
+      - "traefik.http.routers.vaultwarden-websocket.service=bitwarden-websocket"
+      - "traefik.http.services.vaultwarden-websocket.loadbalancer.server.port=3012"
 
     networks:
       - traefik_proxy
