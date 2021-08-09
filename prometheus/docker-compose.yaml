@@ -35,4 +35,3 @@ services:
     ports:
       - 9116:9000
     restart: unless-stopped
-    
