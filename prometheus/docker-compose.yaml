@@ -25,3 +25,14 @@ services:
       - "./config/blackbox-exporter.yml:/etc/prometheus/blackbox-exporter.yml"
     command:
       - "--config.file=/etc/prometheus/blackbox-exporter.yml"
+
+  webhook:
+    image: thecatlady/webhook
+    container_name: webhook
+    command: -verbose -hooks=hooks.yml -hotreload
+    volumes:
+      - ./config:/config:ro
+    ports:
+      - 9116:9000
+    restart: unless-stopped
+    
