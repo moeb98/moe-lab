@@ -1,0 +1,3 @@
+- id: echo-webhook
+  execute-command: "./echo.sh"
+  command-working-directory: "./"
