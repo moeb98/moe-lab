@@ -1,3 +1,4 @@
 */.env
 acme.json
 targets.yml
+scripts/*
