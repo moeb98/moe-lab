@@ -9,8 +9,6 @@ groups:
         labels:
           severity: critical
 
-
-
       # service availability alert
       - alert: service_down
         expr: up == 0
@@ -31,4 +29,3 @@ groups:
         annotations:
           description: Service {{ $labels.instance }} is available.
           value: UP ({{ $value }})
-          
