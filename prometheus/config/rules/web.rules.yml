@@ -14,8 +14,14 @@ groups:
         expr: up == 0
         labels:
           severity: critical
+        annotations:
+          description: Service {{ $labels.instance }} is unavailable.
+          value: DOWN ({{ $value }})
 
       - alert: service_up
         expr: up == 1
         labels:
           severity: normal
+        annotations:
+          description: Service {{ $labels.instance }} is available.
+          value: UP ({{ $value }})
