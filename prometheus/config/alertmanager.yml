@@ -4,7 +4,7 @@
 global:
 
 receivers:
-  - name: "my-receiver"
+  - name: 'my-receiver'
     webhook_configs:
       - url: "http://localhost:9116/hooks/echo-webhook"
 
@@ -13,9 +13,9 @@ route:
   group_wait: 10s
   group_interval: 10s
   repeat_interval: 10s
-  # receiver: "my-receiver"
+  # receiver: my-receiver
 
   routes:
-    receiver: "my-receiver"
-    match_re:
-      alertname: service_up
+    - match_re:
+        alertname: service_up
+      receiver: my-receiver
