@@ -5,7 +5,7 @@ groups:
     rules:
       - alert: invalid_http_status_code
         expr: probe_http_status_code != 200
-        for: 30m
+        for: 10m
         labels:
           severity: critical
 
@@ -13,9 +13,7 @@ groups:
       - alert: service_down
         expr: up == 0
         labels:
-          service: Platform
-          severity: major
-          correlate: service_up,service_down
+          severity: critical
         annotations:
           description: Service {{ $labels.instance }} is unavailable.
           value: DOWN ({{ $value }})
@@ -23,9 +21,7 @@ groups:
       - alert: service_up
         expr: up == 1
         labels:
-          service: Platform
           severity: normal
-          correlate: service_up,service_down
         annotations:
           description: Service {{ $labels.instance }} is available.
           value: UP ({{ $value }})
