@@ -4,9 +4,9 @@
 global:
 
 receivers:
-      - name: "my-receiver"
-        webhook_configs:
-          - url: "http://localhost:9116/hooks/echo-webhook"
+  - name: "my-receiver"
+    webhook_configs:
+      - url: "http://localhost:9116/hooks/echo-webhook"
 
 route:
   group_by: ["alertname"]
