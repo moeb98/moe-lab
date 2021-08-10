@@ -16,6 +16,6 @@ route:
   # receiver: my-receiver
 
   routes:
-  - match_re:
-      alertname: service_up
-    receiver: my-receiver
+    - match_re:
+        alertname: service_up
+      receiver: my-receiver
