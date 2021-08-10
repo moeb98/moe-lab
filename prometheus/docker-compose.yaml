@@ -13,6 +13,17 @@ services:
     ports:
       - "9090:9090"
 
+  alertmanager:
+    image: prom/alertmanager
+    volumes:
+      - ./config:/prometheus
+     # - ./data/alertmanager:/data
+    command:
+      - '--config.file=/prometheus/alertmanager.yml'
+    #  - '--storage.path=/data'
+    ports:
+      - 9093:9093
+
   blackbox-exporter:
     image: "prom/blackbox-exporter:latest"
     hostname: "blackbox"

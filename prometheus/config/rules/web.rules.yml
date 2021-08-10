@@ -8,3 +8,24 @@ groups:
         for: 30m
         labels:
           severity: critical
+
+      # service availability alert
+      - alert: service_down
+        expr: up == 0
+        labels:
+          service: Platform
+          severity: major
+          correlate: service_up,service_down
+        annotations:
+          description: Service {{ $labels.instance }} is unavailable.
+          value: DOWN ({{ $value }})
+
+      - alert: service_up
+        expr: up == 1
+        labels:
+          service: Platform
+          severity: normal
+          correlate: service_up,service_down
+        annotations:
+          description: Service {{ $labels.instance }} is available.
+          value: UP ({{ $value }})
