@@ -14,7 +14,6 @@ groups:
 
       - alert: http_up
         expr: probe_http_status_code == 200
-        for: 5m
         labels:
           severity: normal
         annotations:
