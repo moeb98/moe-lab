@@ -1,3 +1,7 @@
-- id: echo-webhook
-  execute-command: "/config/scripts/echo.sh"
+- id: down-webhook
+  execute-command: "/config/scripts/down.sh"
+  command-working-directory: "/config/scripts/"
+
+- id: up-webhook
+  execute-command: "/config/scripts/up.sh"
   command-working-directory: "/config/scripts/"
