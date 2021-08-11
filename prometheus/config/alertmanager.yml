@@ -5,9 +5,12 @@ global:
 
 receivers:
   - name: 'default-receiver'
-  - name: 'my-receiver'
+  - name: 'down_alert_receiver'
     webhook_configs:
-      - url: "http://localhost:9116/hooks/echo-webhook"
+      - url: "http://localhost:9116/hooks/down-webhook"
+  - name: 'up_alert_receiver'
+    webhook_configs:
+      - url: "http://localhost:9116/hooks/up-webhook"
 
 route:
   group_by: ["alertname"]
@@ -17,6 +20,9 @@ route:
   receiver: default-receiver
 
   routes:
-    - match_re:
-        alertname: service_up
-      receiver: my-receiver
+    - match:
+        alertname: http_down
+      receiver: down_alert_receiver
+    - match:
+        alertname: http_up
+      receiver: up_alert_receiver
