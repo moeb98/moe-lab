@@ -10,7 +10,7 @@ receivers:
       - url: "http://localhost:9116/hooks/down-webhook"
   - name: 'up_alert_receiver'
     webhook_configs:
-      - url: "http://localhost:9116/hooks/up-webhook"      
+      - url: "http://localhost:9116/hooks/up-webhook"
 
 route:
   group_by: ["alertname"]
