@@ -16,4 +16,4 @@
     name: "StringArg"
   - source: "entire-payload"
   - source: "payload"
-    name: "labels.instance"
+    name: "alerts.labels.instance"
