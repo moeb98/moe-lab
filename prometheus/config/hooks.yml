@@ -14,5 +14,6 @@
   pass-arguments-to-command:
   - source: "string"
     name: "StringArg"
-  - source: "header"
+  - source: "entire-query"
+  - source: "query"
     name: "labels.instance"
