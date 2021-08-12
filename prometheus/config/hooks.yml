@@ -4,8 +4,9 @@
   pass-arguments-to-command:
   - source: "string"
     name: "StringArg"
-  - source: "payload"
-    name: "payload"
+  - source: "entire-payload"
+  - source: "entire-headers"
+  - source: "entire-query"
 
 - id: up-webhook
   execute-command: "/config/scripts/up.sh"
@@ -13,5 +14,6 @@
   pass-arguments-to-command:
   - source: "string"
     name: "StringArg"
-  - source: "payload"
-    name: "payload"
+  - source: "entire-payload"
+  - source: "entire-headers"
+  - source: "entire-query"
