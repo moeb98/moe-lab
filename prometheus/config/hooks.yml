@@ -2,8 +2,8 @@
   execute-command: "/config/scripts/down.sh"
   command-working-directory: "/config/scripts/"
   pass-arguments-to-command:
-  - source: "string"
-    name: "StringArg"
+  - source: "payload"
+    name: "alerts.0.labels.instance"
   - source: "entire-payload"
   - source: "entire-headers"
   - source: "entire-query"
@@ -12,10 +12,5 @@
   execute-command: "/config/scripts/up.sh"
   command-working-directory: "/config/scripts/"
   pass-arguments-to-command:
-  - source: "string"
-    name: "StringArg"
-  - source: "entire-payload"
-  - source: "payload"
-    name: "alerts.0.labels.instance"
   - source: "payload"
     name: "commonLabels.instance"
