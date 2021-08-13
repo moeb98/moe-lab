@@ -2,3 +2,4 @@
 acme.json
 targets.yml
 **/scripts/
+**/data/
