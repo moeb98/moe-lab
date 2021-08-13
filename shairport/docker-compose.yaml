@@ -6,7 +6,7 @@ services:
     image: tigerj/shairport-sync:latest
     restart: unless-stopped
     network_mode: host
-    devices: 
+    devices:
       - /dev/snd
     environment:
       - AIRPLAY_NAME=pi
