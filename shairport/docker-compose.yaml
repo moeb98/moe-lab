@@ -1,0 +1,14 @@
+---
+version: '3.3'
+
+services:
+  airport:
+    image: tigerj/shairport-sync:latest
+    restart: unless-stopped
+    network_mode: host
+    devices: 
+      - /dev/snd
+    environment:
+      - AIRPLAY_NAME=pi
+      - PGID=1000
+      - PUID=1000

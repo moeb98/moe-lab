@@ -42,7 +42,10 @@ services:
     container_name: webhook
     command: -verbose -hooks=hooks.yml -hotreload
     volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
       - ./config/:/config/
+      - ./data/:/data/
     ports:
       - 9116:9000
     restart: unless-stopped
