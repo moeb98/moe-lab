@@ -5,7 +5,7 @@ groups:
     rules:
       - alert: http_down
         expr: probe_http_status_code != 200
-        for: 5m
+        for: 3m
         labels:
           severity: critical
         annotations:
@@ -14,6 +14,7 @@ groups:
 
       - alert: http_up
         expr: probe_http_status_code == 200
+        for: 3m
         labels:
           severity: normal
         annotations:
