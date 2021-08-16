@@ -17,7 +17,7 @@
   - source: "string"
     name: "-e"
   - source: "payload"
-    name: "alerts.0.endsAt"  
+    name: "alerts.0.endsAt"
 
 - id: up-webhook
   execute-command: "/config/scripts/up.sh"
@@ -27,4 +27,4 @@
     name: "commonLabels.instance"
   - source: "entire-payload"
   - source: "entire-headers"
-  - source: "entire-query"    
+  - source: "entire-query"
