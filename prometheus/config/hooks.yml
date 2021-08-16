@@ -2,11 +2,22 @@
   execute-command: "/config/scripts/down.sh"
   command-working-directory: "/config/scripts/"
   pass-arguments-to-command:
+  - source: "string"
+    name: "-i"
   - source: "payload"
     name: "alerts.0.labels.instance"
-  - source: "entire-payload"
-  - source: "entire-headers"
-  - source: "entire-query"
+  - source: "string"
+    name: "-s"
+  - source: "payload"
+    name: "alerts.0.status"
+  - source: "string"
+    name: "-b"
+  - source: "payload"
+    name: "alerts.0.startsAt"
+  - source: "string"
+    name: "-e"
+  - source: "payload"
+    name: "alerts.0.endsAt"
 
 - id: up-webhook
   execute-command: "/config/scripts/up.sh"
@@ -14,3 +25,6 @@
   pass-arguments-to-command:
   - source: "payload"
     name: "commonLabels.instance"
+  - source: "entire-payload"
+  - source: "entire-headers"
+  - source: "entire-query"
