@@ -18,6 +18,7 @@
     name: "-e"
   - source: "payload"
     name: "alerts.0.endsAt"
+  - source: "entire-payload"
 
 - id: up-webhook
   execute-command: "/config/scripts/up.sh"
