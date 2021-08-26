@@ -20,12 +20,12 @@
     name: "alerts.0.endsAt"
   - source: "entire-payload"
 
-- id: up-webhook
-  execute-command: "/config/scripts/up.sh"
-  command-working-directory: "/config/scripts/"
-  pass-arguments-to-command:
-  - source: "payload"
-    name: "commonLabels.instance"
-  - source: "entire-payload"
-  - source: "entire-headers"
-  - source: "entire-query"
+# - id: up-webhook
+#   execute-command: "/config/scripts/up.sh"
+#   command-working-directory: "/config/scripts/"
+#   pass-arguments-to-command:
+#   - source: "payload"
+#     name: "commonLabels.instance"
+#   - source: "entire-payload"
+#   - source: "entire-headers"
+#   - source: "entire-query"
