@@ -4,6 +4,7 @@ version: '3.3'
 services:
   wordpress-db:
     image: jsurf/rpi-mariadb:latest
+    # image: yobasystems/alpine-mariadb:latest
     container_name: wordpress-db
     restart: always
     volumes:
@@ -17,7 +18,8 @@ services:
       - backend
 
   wordpress-app:
-    image: wordpress:latest
+    image: wordpress:5.7.2
+    # image: wordpress:latest
     container_name: wordpress-app
     depends_on:
       - wordpress-db

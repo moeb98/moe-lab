@@ -3,7 +3,8 @@ version: "3.3"
 
 services:
   syncthing:
-    image: ghcr.io/linuxserver/syncthing
+    # image: ghcr.io/linuxserver/syncthing
+    image: syncthing/syncthing
     container_name: syncthing
 
     environment:

@@ -15,12 +15,13 @@ services:
 
   alertmanager:
     image: prom/alertmanager
+    restart: unless-stopped
+    depends_on:
+      - "prometheus"
     volumes:
       - ./config:/prometheus
-     # - ./data/alertmanager:/data
     command:
       - '--config.file=/prometheus/alertmanager.yml'
-    #  - '--storage.path=/data'
     ports:
       - 9093:9093
 
@@ -38,7 +39,7 @@ services:
       - "--config.file=/etc/prometheus/blackbox-exporter.yml"
 
   webhook:
-    image: thecatlady/webhook
+    image: mrmoe/moe-webhook
     container_name: webhook
     command: -verbose -hooks=hooks.yml -hotreload
     volumes:

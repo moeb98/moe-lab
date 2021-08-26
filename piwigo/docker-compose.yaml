@@ -18,11 +18,13 @@ services:
       - backend
 
   piwigo-app:
-    image: linuxserver/piwigo
+    image: linuxserver/piwigo:arm32v7-version-2.10.2
+    # image: linuxserver/piwigo:latest
     container_name: piwigo-app
     restart: unless-stopped
     volumes:
       - /srv/docker/piwigo/config:/config
+      - /srv/docker/piwigo/gallery:/gallery
     links:
       - piwigo-db
     depends_on:
