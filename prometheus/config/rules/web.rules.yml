@@ -3,37 +3,38 @@
 groups:
   - name: web.rules
     rules:
-      - alert: http_down
-        expr: probe_http_status_code != 200
-        for: 2m
-        labels:
-          severity: critical
-        annotations:
-          description: Service {{ $labels.instance }} is unavailable.
-          value: DOWN ({{ $value }})
+    - alert: http_down
+      expr: probe_http_status_code != 200
+      for: 2m
+      labels:
+        severity: critical
+      annotations:
+        description: Service {{ $labels.instance }} is unavailable.
+        value: DOWN ({{ $value }})
 
-      # - alert: http_up
-      #   expr: probe_http_status_code == 200
-      #   for: 3m
-      #   labels:
-      #     severity: normal
-      #   annotations:
-      #     description: Service {{ $labels.instance }} is available.
-      #     value: UP ({{ $value }})
+    # - alert: http_up
+    #   expr: probe_http_status_code == 200
+    #   for: 3m
+    #   labels:
+    #     severity: normal
+    #   annotations:
+    #     description: Service {{ $labels.instance }} is available.
+    #     value: UP ({{ $value }})
 
-      # service availability alert
-      # - alert: service_down
-      #   expr: up == 0
-      #   labels:
-      #     severity: critical
-      #   annotations:
-      #     description: Service {{ $labels.instance }} is unavailable.
-      #     value: DOWN ({{ $value }})
+    # service availability alert
+    - alert: service_down
+      expr: up == 0
+      for: 2m
+      labels:
+        severity: critical
+      annotations:
+        description: Service {{ $labels.instance }} is unavailable.
+        value: DOWN ({{ $value }})
 
-      # - alert: service_up
-      #   expr: up == 1
-      #   labels:
-      #     severity: normal
-      #   annotations:
-      #     description: Service {{ $labels.instance }} is available.
-      #     value: UP ({{ $value }})
+    # - alert: service_up
+    #   expr: up == 1
+    #   labels:
+    #     severity: normal
+    #   annotations:
+    #     description: Service {{ $labels.instance }} is available.
+    #     value: UP ({{ $value }})

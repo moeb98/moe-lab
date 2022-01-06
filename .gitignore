@@ -1,4 +1,5 @@
 */.env
+*.credentials
 acme.json
 targets.yml
 **/scripts/
