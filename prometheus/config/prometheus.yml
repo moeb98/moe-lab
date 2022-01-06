@@ -29,3 +29,21 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: blackbox-exporter:9115
+
+  - job_name: "website-monitoring-http-basic-auth"
+    #    metrics_path: /probe
+    params:
+      module: [http_2xx]
+    basic_auth:
+      username: admin
+      password_file: ./basic-auth.credentials
+    file_sd_configs:
+      - files:
+          - /etc/prometheus/targets-basic-auth.yml
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox-exporter:9115

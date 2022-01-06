@@ -22,13 +22,14 @@ groups:
       #     value: UP ({{ $value }})
 
       # service availability alert
-      # - alert: service_down
-      #   expr: up == 0
-      #   labels:
-      #     severity: critical
-      #   annotations:
-      #     description: Service {{ $labels.instance }} is unavailable.
-      #     value: DOWN ({{ $value }})
+      - alert: service_down
+        expr: up == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          description: Service {{ $labels.instance }} is unavailable.
+          value: DOWN ({{ $value }})
 
       # - alert: service_up
       #   expr: up == 1
