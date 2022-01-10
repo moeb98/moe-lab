@@ -1,0 +1,61 @@
+---
+version: "3.3"
+
+services:
+  db_recipes:
+    restart: unless-stopped
+    image: postgres:11-alpine
+    volumes:
+      - /srv/tandoor/postgresql:/var/lib/postgresql/data
+    env_file:
+      - ./.env
+    networks:
+      - default
+
+  web_recipes:
+    image: vabene1111/recipes
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    volumes:
+      - staticfiles:/opt/recipes/staticfiles
+      - nginx_config:/opt/recipes/nginx/conf.d
+      - /srv/tandoor/mediafiles:/opt/recipes/mediafiles
+    depends_on:
+      - db_recipes
+    networks:
+      - default
+
+  nginx_recipes:
+    image: nginx:mainline-alpine
+    restart: unless-stopped
+    env_file:
+      - ./.env
+    volumes:
+      - nginx_config:/etc/nginx/conf.d:ro
+      - staticfiles:/recipes/static
+      - /srv/tandoor/mediafiles:/media
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tandoor.entrypoints=web-secure"
+      - "traefik.http.routers.tandoor.rule=Host(`${TANDOOR_DOMAIN}`)"
+      - "traefik.http.routers.tandoor.tls=true"
+      - "traefik.http.routers.tandoor.tls.certresolver=default"
+      - "traefik.http.services.tandoor.loadbalancer.server.port=80"
+    depends_on:
+      - web_recipes
+    networks:
+      - default
+      - traefik_proxy
+
+networks:
+  default:
+  #     external:
+  #       name: backend
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+
+volumes:
+  nginx_config:
+  staticfiles:
