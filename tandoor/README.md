@@ -32,7 +32,7 @@ TANDOOR_DOMAIN=your_domain
 ```
 
 Also important is to set the ```MEDIA_URL´´´ to the exakt http address you
-are serving media from, e.g. `https://recipes.your_domain.com/media/´.
+are serving media from.
 
 ## Start up
 
