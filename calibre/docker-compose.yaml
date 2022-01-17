@@ -1,0 +1,36 @@
+---
+version: "3"
+services:
+  calibre-web:
+    image: ghcr.io/linuxserver/calibre-web
+    container_name: calibre-web
+    restart: unless-stopped
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /srv/calibre/calibre-web/config:/config
+      - /srv/calibre/config/calibre-library:/books
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - DOCKER_MODS=ghcr.io/linuxserver/calibre-web:calibre
+    ports:
+      - 8083:8083
+    labels:
+      - "traefik.enable=false"
+      - "traefik.http.routers.calibre.entrypoints=websecure"
+      - "traefik.http.routers.calibre.rule=Host(`${CALIBRE_DOMAIN}`)"
+      - "traefik.http.routers.calibre.tls=true"
+      - "traefik.http.routers.calibre.tls.certresolver=default"
+      - "traefik.http.routers.calibre.middlewares=secHeaders@file"
+      - "traefik.http.services.calibre.loadbalancer.server.port=8083"
+    networks:
+#      - traefik_proxy
+      - default
+
+networks:
+  traefik_proxy:
+    external:
+      name: traefik_proxy
+  default:
+#    driver: bridge
