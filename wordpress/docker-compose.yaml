@@ -26,7 +26,7 @@ services:
     restart: always
     volumes:
       - /srv/www/wp-content:/var/www/html/wp-content
-      - /srv/www/me-doc:/var/www/html/me-doc
+ #     - /srv/www/me-doc:/var/www/html/me-doc
     environment:
       - WORDPRESS_DB_HOST=wordpress-db:3306
       - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}
