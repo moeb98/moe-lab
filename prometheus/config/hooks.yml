@@ -1,7 +1,7 @@
 - id: down-webhook
-    execute-command: "/config/scripts/down.sh"
-    command-working-directory: "/config/scripts/"
-    pass-arguments-to-command:
+  execute-command: "/config/scripts/down.sh"
+  command-working-directory: "/config/scripts/"
+  pass-arguments-to-command:
     - source: "string"
       name: "-i"
     - source: "payload"
