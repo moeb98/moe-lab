@@ -32,7 +32,7 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Markdown Lintin Action
-        uses: avto-dev/markdown-lint@v1.1.0
+        uses: avto-dev/markdown-lint@v1.5.0
         with:
           args: '**/*.md'
 
