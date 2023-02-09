@@ -8,10 +8,6 @@ corresponding docker-compose files.
 
 In alphabetical order
 
-### B
-
-* Bitwarden_rs - <https://github.com/dani-garcia/bitwarden_rs>
-
 ### N
 
 * Nextcloud - <https://nextcloud.com>
@@ -32,6 +28,10 @@ In alphabetical order
 
 * Traefik - <https://traefik.io>
 * TURN Server for Nextcloud
+
+### V
+
+* Vaultwarden - <https://github.com/dani-garcia/vaultwarden>
 
 ### W
 
