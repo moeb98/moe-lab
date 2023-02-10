@@ -41,7 +41,7 @@ services:
   webhook:
     image: mrmoe/moe-webhook
     container_name: webhook
-    command: -verbose -hooks=hooks.yml -hotreload
+    command: -verbose -hooks=hooks.json -hotreload
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
