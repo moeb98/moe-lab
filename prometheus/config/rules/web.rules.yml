@@ -5,7 +5,7 @@ groups:
     rules:
       - alert: http_down
         expr: probe_http_status_code != 200
-        for: 2m
+        for: 3m
         labels:
           severity: critical
         annotations:
@@ -24,7 +24,7 @@ groups:
       # service availability alert
       - alert: service_down
         expr: up == 0
-        for: 2m
+        for: 3m
         labels:
           severity: critical
         annotations:
