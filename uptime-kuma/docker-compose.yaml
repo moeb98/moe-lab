@@ -6,14 +6,14 @@ services:
     image: louislam/uptime-kuma:1
     container_name: uptime-kuma
     restart: unless-stopped
-    networks:
-      - backend
+#    networks:
+#      - backend
     volumes:
       - ./data:/app/data
     ports:
       - 3001:3001
 
-networks:
-  backend:
-    external:
-      name: backend
+# networks:
+#   backend:
+#     external:
+#       name: backend

@@ -2,7 +2,8 @@
 version: "3"
 services:
   calibre-web:
-    image: lscr.io/linuxserver/calibre-web:arm32v7-latest
+    image: lscr.io/linuxserver/calibre-web
+#    image: lscr.io/linuxserver/calibre-web:arm32v7-latest
     container_name: calibre-web
     restart: unless-stopped
     volumes:

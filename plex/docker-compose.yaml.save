@@ -1,0 +1,22 @@
+---
+version: "3.3"
+
+services:
+  plex:
+    image: linuxserver/plex
+    container_name: plex
+    network_mode: host
+
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+      - VERSION=docker
+
+    volumes:
+      - /srv/plex/config:/config
+      - /srv/plex/album:/album
+      - /srv/plex/music:/music
+      - /srv/plex/video:/video
+
+    restart: unless-stopped
