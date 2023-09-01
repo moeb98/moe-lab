@@ -1,0 +1,22 @@
+---
+version: '3'
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    restart: unless-stopped
+    ports:
+      - 8096:8096
+    volumes:
+      - /srv/syncthing/data/music:/media:ro
+    environment:
+      - TZ=Europe/Berlin
+
+    networks:
+      - backend
+
+networks:
+  backend:
+    external:
+      name: backend

@@ -4,3 +4,4 @@ acme.json
 targets.yml
 **/scripts/
 **/data/
+**/plex_config/
