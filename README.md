@@ -18,6 +18,7 @@ In alphabetical order
 
 ### P
 
+* Piwigo - <https://piwigo.org/>
 * Portainer - <https://www.portainer.io>
 
 ### S
