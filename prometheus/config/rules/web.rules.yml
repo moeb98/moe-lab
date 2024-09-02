@@ -12,14 +12,14 @@ groups:
           description: Service {{ $labels.instance }} is unavailable.
           value: DOWN ({{ $value }})
 
-      # - alert: http_up
-      #   expr: probe_http_status_code == 200
-      #   for: 3m
-      #   labels:
-      #     severity: normal
-      #   annotations:
-      #     description: Service {{ $labels.instance }} is available.
-      #     value: UP ({{ $value }})
+#      - alert: http_up
+#        expr: probe_http_status_code == 200
+#        for: 3m
+#        labels:
+#          severity: normal
+#        annotations:
+#          description: Service {{ $labels.instance }} is available.
+#          value: UP ({{ $value }})
 
       # service availability alert
       - alert: service_down
