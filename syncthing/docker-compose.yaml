@@ -1,9 +1,7 @@
 ---
-version: "3.3"
 
 services:
   syncthing:
-    # image: ghcr.io/linuxserver/syncthing
     image: syncthing/syncthing
     container_name: syncthing
 
@@ -13,15 +11,17 @@ services:
       - TZ=Europe/Berlin
 
     volumes:
-      - /srv/syncthing/config:/config
-      - /srv/syncthing/data:/data
-#      - /srv/syncthing/music:/data/music
-#      - /srv/syncthing/album:/data/album
+      - /srv/syncthing/config:/var/syncthing/config
+#      - /srv/syncthing/data:/data
+      - /mnt/nas/music:/data/music
+      - /mnt/nas/album:/data/album
+      - /mnt/nas/lr:/data/lr
 
-    ports:
-      - 8384:8384
-      - 22000:22000/tcp
-      - 22000:22000/udp
-      - 21027:21027/udp
+#    ports:
+#      - 8384:8384
+#      - 22000:22000/tcp
+#      - 22000:22000/udp
+#      - 21027:21027/udp
 
+    network_mode: host
     restart: unless-stopped
