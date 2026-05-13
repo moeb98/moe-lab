@@ -10,3 +10,4 @@ modules:
       method: GET
       preferred_ip_protocol: "ip4"
       ip_protocol_fallback: false
+      follow_redirects: true
