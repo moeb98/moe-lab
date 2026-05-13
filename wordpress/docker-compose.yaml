@@ -1,10 +1,8 @@
 ---
-version: '3.3'
 
 services:
   wordpress-db:
     image: jsurf/rpi-mariadb:latest
-    # image: yobasystems/alpine-mariadb:latest
     container_name: wordpress-db
     restart: always
     volumes:
@@ -18,15 +16,13 @@ services:
       - backend
 
   wordpress-app:
-    image: wordpress:5.7.2
-    # image: wordpress:latest
+    image: wordpress:latest
     container_name: wordpress-app
     depends_on:
       - wordpress-db
     restart: always
     volumes:
       - /srv/www/wp-content:/var/www/html/wp-content
- #     - /srv/www/me-doc:/var/www/html/me-doc
     environment:
       - WORDPRESS_DB_HOST=wordpress-db:3306
       - WORDPRESS_DB_USER=${WORDPRESS_DB_USER}

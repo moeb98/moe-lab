@@ -3,4 +3,3 @@ services:
     image: nickfedor/watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-#    command: --disable-containers moe-paperless-ngx-webserver-1
