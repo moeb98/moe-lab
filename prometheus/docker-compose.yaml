@@ -1,9 +1,9 @@
 ---
-version: '3'
 
 services:
   prometheus:
-    image: prom/prometheus:v2.39.1
+#    image: prom/prometheus:v2.39.1
+    image: prom/prometheus:latest
     container_name: prometheus
     restart: unless-stopped
     volumes:
