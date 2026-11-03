@@ -25,3 +25,6 @@ services:
 
     network_mode: host
     restart: unless-stopped
+    mem_limit: 3g
+    cpus: 2.0
+    stop_grace_period: 60s

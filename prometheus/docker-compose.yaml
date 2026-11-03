@@ -5,6 +5,9 @@ services:
     image: prom/prometheus:latest
     container_name: prometheus
     restart: unless-stopped
+    mem_limit: 3g
+    cpus: 2.0
+    stop_grace_period: 30s
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
