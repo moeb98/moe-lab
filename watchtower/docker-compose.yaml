@@ -1,5 +1,13 @@
 services:
   watchtower:
     image: nickfedor/watchtower
+    container_name: watchtower
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      TZ: Europe/Berlin
+      WATCHTOWER_DISABLE_CONTAINERS:
+        nextcloud-app nextcloud-db piwigo-app piwigo-db
+      WATCHTOWER_SCHEDULE: 15 5 * * *
+      WATCHTOWER_CLEANUP: true
