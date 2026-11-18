@@ -1,0 +1,20 @@
+services:
+  arcane:
+    image: ghcr.io/getarcaneapp/manager:latest
+    container_name: arcane
+    restart: unless-stopped
+    ports:
+      - "3552:3552"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/docker/arcane:/app/data
+      # - /opt/stacks:/opt/stacks
+    environment:
+      - ARCANE_APP_URL=${APP_URL}
+      - ARCANE_ENCRYPTION_KEY=${ENCRYPTION_KEY}
+      # - ARCANE_PROJECTS_DIRECTORY=/opt/stacks
+      - ARCANE_ANALYTICS_ENABLED=false
+      - ARCANE_ALLOW_CLI_PASSWORD_RESET=true
+
+#volumes:
+#  arcane-data:
